@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import client from "@libs/server/client";
+import db from "@libs/server/db";
 import { withApiSession } from "@libs/server/withSession";
 import withHandler, { ResponseType } from "@libs/server/withHandler";
 
@@ -8,12 +8,12 @@ async function handler(
   res: NextApiResponse<ResponseType>
 ) {
   const { email } = req.body;
-  const foundEmail = await client.user.findUnique({
+  const foundEmail = await db.user.findUnique({
     where: {
       email,
     },
   });
-  if (!foundEmail) return res.status(404).end();
+  if (!foundEmail) return res.json({ ok: false, error: true });
   req.session.user = {
     id: foundEmail.id,
   };
