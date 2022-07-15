@@ -28,15 +28,17 @@ const Login: NextPage = () => {
   };
   const router = useRouter();
   useEffect(() => {
+    console.log(data);
     if (data?.ok) {
       router.replace("/");
-    } else if (data?.error) {
-      if (
-        confirm("We not found your account. Do you want to create new account?")
-      ) {
-        router.replace("/create-account");
-      }
     }
+    //  else if (data?.error) {
+    //   if (
+    //     confirm("We not found your account. Do you want to create new account?")
+    //   ) {
+    //     router.replace("/create-account");
+    //   }
+    // }
   }, [data]);
   return (
     <div className="mt-16 px-4 flex flex-col justify-center items-center">
