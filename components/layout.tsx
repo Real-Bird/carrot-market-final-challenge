@@ -26,17 +26,19 @@ export default function Layout({
       <Head>
         <title>{head}</title>
       </Head>
-      <div
-        {...rest}
-        className="fixed top-0 flex h-12 w-full max-w-xl items-center justify-center border-b bg-white text-lg font-medium text-gray-800"
-      >
-        {title ? <span className="mx-auto">{title}</span> : null}
-        <button
-          className="absolute right-5 bg-teal-400 p-1 rounded-md hover:bg-teal-500"
-          onClick={onLogout}
+      <div className="flex justify-center">
+        <div
+          {...rest}
+          className="fixed top-0 flex h-12 w-full max-w-xl items-center justify-center border-b bg-white text-lg font-medium text-gray-800"
         >
-          Log-out
-        </button>
+          {title ? <span className="mx-auto">{title}</span> : null}
+          <button
+            className="absolute right-5 bg-teal-400 p-1 rounded-md hover:bg-teal-500"
+            onClick={onLogout}
+          >
+            Log-out
+          </button>
+        </div>
       </div>
       <div className="py-12">{children}</div>
     </div>
